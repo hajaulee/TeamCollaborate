@@ -162,7 +162,7 @@ class UserApiController extends ApiController
     /**
      * Method put
      * usage: http://localhost:8000/api/user/change-name?channel_id=2&display_name=Hehehe
-     * change Display name of user in specific channel
+     * change Display name of user in specifical channel
      * $request has channel_id
      * @param ChangeDisplayNameRequest $request
      * @return JsonResponse

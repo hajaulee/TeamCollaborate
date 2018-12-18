@@ -15,11 +15,20 @@ class ChannelManagerController extends Controller
         $this->channel = $channel;
     }
 
+    /**
+     * return all channel
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
         $channels = $this->channel->all();
         return view('admin.channels', compact('channels'));
     }
 
+    /**
+     * Update status of channel
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateStatus(Request $request){
         $status = $request->get('status');
         $id=$request->get('id');
@@ -27,6 +36,11 @@ class ChannelManagerController extends Controller
         return response()->json(['data'=>$status], self::CODE_UPDATE_SUCCESS);
     }
 
+    /**
+     * view detail of channel
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function detail($id){
         $channel = $this->channel->getById($id);
         $channel->getCreator;
@@ -38,6 +52,11 @@ class ChannelManagerController extends Controller
         return response()->json(['data'=>$channel], self::CODE_GET_SUCCESS);
     }
 
+    /**
+     * remove channel
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete($id){
         $status = $this->channel->destroy($id);
         return response()->json(['data'=> $status ], self::CODE_DELETE_SUCCESS);

@@ -43,6 +43,11 @@ class DashBoardController extends Controller
         return view('admin.dashboard', ['count' => $count]);
     }
 
+    /**
+     * Get chart by model name and type(yearly, mothly, daily)
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getChart(Request $request){
         $type = $request->get('type');
         $model = $request->get('model');
